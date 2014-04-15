@@ -1,0 +1,19 @@
+{
+    "name": "bogosort",
+    "version": "0.0.1",
+    "author": "Daniel K. <danielk@foocode.de>",
+    "description": "This (stupid) package for node.js implements the well known BogoSort algorithm.",
+    "scripts": {
+        "start": "node ./example.js"
+    },
+    "main": "./index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dak0rn/bogosort.git"
+    },
+    "keywords": [ "algorithms", "bogosort", "monkeysort", "stupidsort", "sort"],
+    "license": "Apache v2.0",
+    "engines": {
+        "node": ">=0.10.21"
+    }
+}
