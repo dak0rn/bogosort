@@ -49,3 +49,6 @@ Pseudo code follows:
     console.log(a.shuffle());
     console.log("Rounds: ", a.bogosort());
 
+# Post
+
+There is also a blog post about it available at [http://danielk.foocode.de/bogosort-for-javascript/](http://danielk.foocode.de/bogosort-for-javascript/).
