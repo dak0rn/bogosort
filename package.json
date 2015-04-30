@@ -12,7 +12,7 @@
         "url": "https://github.com/dak0rn/bogosort.git"
     },
     "keywords": [ "algorithms", "bogosort", "monkeysort", "stupidsort", "sort"],
-    "license": "Apache v2.0",
+    "license": "Apache-2.0",
     "engines": {
         "node": ">=0.10.21"
     }
