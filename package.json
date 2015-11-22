@@ -1,32 +1,29 @@
 {
-    "name": "bogosort",
-    "version": "0.0.2",
-    "author": "Daniel K. <danielk@foocode.de>",
-    "description": "This (stupid) package for node.js implements the well known BogoSort algorithm.",
-    "scripts": {
-        "start": "node ./example.js"
-    },
-    "main": "./index.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/dak0rn/bogosort.git"
-    },
-    "keywords": [
-        "algorithms",
-        "bogosort",
-        "monkeysort",
-        "stupidsort",
-        "sort"
-    ],
-    "license": "Apache-2.0",
-    "engines": {
-        "node": ">=0.10.21"
-    },
-    "devDependencies": {
-        "babel-preset-es2015": "^6.1.18",
-        "grunt": "^0.4.5",
-        "grunt-babel": "^6.0.0",
-        "grunt-contrib-clean": "^0.7.0",
-        "grunt-umd": "^2.3.4"
-    }
+  "name": "bogosort",
+  "version": "0.0.2",
+  "author": "Daniel K. <danielk@foocode.de>",
+  "description": "This (stupid) package for node.js implements the well known BogoSort algorithm.",
+  "scripts": {
+    "start": "node ./example.js"
+  },
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dak0rn/bogosort.git"
+  },
+  "keywords": [
+    "algorithms",
+    "bogosort",
+    "monkeysort",
+    "stupidsort",
+    "sort"
+  ],
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=0.10.21"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
+  }
 }
