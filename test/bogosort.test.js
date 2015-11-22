@@ -3,7 +3,7 @@
  *
  * Author:	Daniel Koch <daniel@suitsoft.eu>
  * Creation:	22 Nov 2015
- * Updated:	Time-stamp: <2015-11-22 15:25:06 dak0rn>
+ * Updated:	Time-stamp: <2015-11-22 15:39:18 dak0rn>
  * Version:	1.0 - Initial release
  *
  */
@@ -37,7 +37,7 @@ var arrayEquals = function(coll1, coll2) {
 describe('Bogosort', function() {
 
     it('should be a function', function() {
-        expect( bogosort ).to.be.a.function();
+        expect( bogosort ).to.be.a('function');
     });
 
     it('should accept one argument', function() {
@@ -89,7 +89,7 @@ describe('Bogosort', function() {
     describe('.measure', function() {
 
         it('should be a function', function() {
-            expect( bogosort.measure ).to.be.a.function();
+            expect( bogosort.measure ).to.be.a('function');
         });
 
         it('should accept one argument', function() {
