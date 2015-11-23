@@ -1,82 +1,110 @@
 /**
- * Copyright 2014 Daniel Koch <danielk@foocode.de>
+ * Bogosort for JavaScript.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Author:	Daniel Koch <daniel@suitsoft.eu>
+ * Creation:	22 Nov 2015
+ * Updated:	Time-stamp: <2015-11-23 06:19:06 dak0rn>
+ * Version:	1.0 - Initial release
+ *		2.0 - Complete rewrite
  *
  */
 
-
-function inj(w) {
-
-    function random(min, max){
-        return Math.floor(min+(max-min)*Math.random());
+// Universal Module Definition
+// see: https://github.com/umdjs/umd/blob/master/templates/returnExports.js
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define([], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like environments that support module.exports,
+        // like Node.
+        module.exports = factory();
+    } else {
+        // Browser globals (root is window)
+        root.returnExports = factory();
     }
+}(this, function () {
+
+    /*
+     * Helper functions
+     */
+    //+ sorted :: [Number] -> Boolean
+    var sorted = function(array) {
+        var i = array.length;
+        while( --i )
+            if( array[i - 1] > array[i] )
+                return false;
+        
+        return true;
+    };
+
+    //+ random :: Number -> Number
+    var random = function(max) {
+        return Math.floor( Math.random() * ( max + 1 ) );
+    };
+
+    //+ shuffle :: [Number] -> [Number]
+    var shuffle = function(array) {
+        var dest = array.slice();
+        var index = dest.length;
+        var targetIndex;
+        var delta;
+
+        while( --index ) {
+            targetIndex = random(index);
+
+            delta = dest[targetIndex];
+            dest[targetIndex] = dest[index];
+            dest[index] = delta;
+        }
+
+        return dest;
+    };
+
+
+    //+ _bogosort :: [Number] -> Object
+    var _bogosort = function(array) {
+        var data = {
+            result: void 0,
+            rounds: 0
+        };
+        
+        if( ! array )
+            return data;
+
+        if( ! array.length ) {
+            data.result = [];
+            return data;
+        }
+
+        data.result = array;
+        while( ! sorted( data.result ) ) {
+            data.result = shuffle( data.result );
+            data.rounds++;
+        }
+
+        return data;
+    };
+
 
     /**
-     * Swaps two elements
-     * @param {int} f       Index #1
-     * @param {int} t       Index #2
-     * @returns {object}    `this`
+     * Bogosort function that returns a
+     * sorted version of the given array.
+     *
      */
-    w.swap = function(f, t){
-        var tmp = this[f];
-        this[f] = this[t];
-        this[t] = tmp;
-
-        return this;
-    }
-
-    // Fisher-Yates-Algorithm to shuffle the array
-    /**
-     * Shuffles in-place
-     * @returns {object}    `this`
-     */
-    w.shuffle = function() {
-        for( var i = this.length-1; i > 0; i-- )
-            this.swap(i, random(0, i) );
-
-        return this;
+    var bogosort = function(array) {
+        return _bogosort(array).result;
     };
 
     /**
-     * Checks if (the array) is sorted
-     * @returns {boolean}   `true` if sorted. Self explanatory.
+     * Bogosort function returning an object with the
+     * sorted array and some metrics.
+     *
      */
-    w.sorted = function(){
-        for(var i = 0; i < this.length; i++){
-            if(this[i] > this[i+1])
-                return false;
-        }
-        return true;
-    }
+    bogosort.measure = _bogosort;
 
-    /**
-     * Yes, the BogoSort algorithm.
-     * Tries to sort the array, may take some time
-     * @returns {int}    Number of rounds
-     */
-    w.bogosort = function() {
-        var i = 0;
-        while( !this.sorted() ) {
-            this.shuffle();
-            ++i;
-        }
 
-        return i;
-    }
-}
-
-/* Expose our stuff */
-exports = module.exports = function() { inj(Array.prototype); };
-          module.exports.inject = function(what) { what && inj(what); };
-
+    return bogosort;
+    
+}));
