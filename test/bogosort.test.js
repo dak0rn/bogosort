@@ -3,7 +3,7 @@
  *
  * Author:	Daniel Koch <daniel@suitsoft.eu>
  * Creation:	22 Nov 2015
- * Updated:	Time-stamp: <2015-11-23 06:29:48 dak0rn>
+ * Updated:	Time-stamp: <2015-11-23 06:35:06 dak0rn>
  * Version:	1.0 - Initial release
  *
  */
@@ -27,7 +27,7 @@ var arrayEquals = function(coll1, coll2) {
     while( i-- )
         if( coll1[i] !== coll2[i] )
             return false;
-    
+
     return true;
 };
 
@@ -61,9 +61,9 @@ describe('Bogosort', function() {
                 var s = arrayEquals(test.exp, e);
                 expect(s).to.be.true;
             });
-            
+
         });
-        
+
     })();
 
     it('should return undefined if given null', function() {
@@ -84,7 +84,7 @@ describe('Bogosort', function() {
         expect( e ).to.be.an.array;
         expect( e.length ).to.equal(0);
     });
-    
+
 
     describe('.measure', function() {
 
@@ -96,10 +96,10 @@ describe('Bogosort', function() {
             expect( bogosort.measure.length ).to.equal(1);
         });
 
-        
+
         it('should return undefined as result if given null', function() {
             var e = bogosort.measure(null);
-            
+
             expect( e ).to.be.an.object;
             expect( e.rounds ).to.equal(0);
             expect( e.result ).to.equal(void 0);
@@ -107,15 +107,15 @@ describe('Bogosort', function() {
 
         it('should return undefined if given undefined', function() {
             var e = bogosort.measure(void 0);
-            
+
             expect( e ).to.be.an.object;
             expect( e.rounds ).to.equal(0);
-            expect( e.result ).to.equal(void 0); 
+            expect( e.result ).to.equal(void 0);
         });
 
         it('should return undefined if invoked without parameters', function() {
             var e = bogosort.measure();
-            
+
             expect( e ).to.be.an.object;
             expect( e.rounds ).to.equal(0);
             expect( e.result ).to.equal(void 0);
@@ -123,7 +123,7 @@ describe('Bogosort', function() {
 
         it('should return an empty array if given an empty array', function() {
             var e = bogosort.measure([]);
-            
+
             expect( e ).to.be.an.object;
             expect( e.rounds ).to.equal(0);
             expect( e.result ).to.be.an.array;
@@ -146,27 +146,17 @@ describe('Bogosort', function() {
                     var e = bogosort.measure(test.src);
 
                     expect( e ).to.be.an.object;
-                    
+
                     var s = arrayEquals(test.exp, e.result);
                     expect(s).to.be.true;
                     expect(e.rounds).to.be.above( (test.src.length > 1 ? 0 : -1)  );
                 });
-                
+
             });
-            
+
         })();
 
 
-        
+
     });
 });
-
-
-
-
-
-
-
-
-
-

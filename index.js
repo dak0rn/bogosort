@@ -3,7 +3,7 @@
  *
  * Author:	Daniel Koch <daniel@suitsoft.eu>
  * Creation:	22 Nov 2015
- * Updated:	Time-stamp: <2015-11-23 06:19:06 dak0rn>
+ * Updated:	Time-stamp: <2015-11-23 06:35:17 dak0rn>
  * Version:	1.0 - Initial release
  *		2.0 - Complete rewrite
  *
@@ -35,7 +35,7 @@
         while( --i )
             if( array[i - 1] > array[i] )
                 return false;
-        
+
         return true;
     };
 
@@ -69,7 +69,7 @@
             result: void 0,
             rounds: 0
         };
-        
+
         if( ! array )
             return data;
 
@@ -106,5 +106,5 @@
 
 
     return bogosort;
-    
+
 }));
