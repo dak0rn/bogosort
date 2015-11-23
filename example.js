@@ -1,21 +1,43 @@
 /**
- * Copyright 2014 Daniel Koch <danielk@foocode.de>
+ * Bogosort usage example.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Author:	Daniel Koch <daniel@suitsoft.eu>
+ * Creation:	23 Nov 2015
+ * Updated:	Time-stamp: <2015-11-23 06:27:08 dak0rn>
+ * Version:	1.0 - Initial release
  *
  */
-var bogo = require("./index")();
+var bogosort = require("./index");
 
-var a = [1,2,3,4,5,6,7,8,9];
-console.log(a.shuffle());
-console.log("Rounds: ", a.bogosort());
+//+ random :: Number -> Number
+var random = function(e) { return Math.floor( Math.random() * (e+1) ); };
+
+//+ sortArray :: [Number] -> ()
+var sortArray = function(array) {
+    // Meta data
+    var sorted;
+
+    console.log('Going to sort');
+    console.log(array);
+    
+    sorted = bogosort.measure(array);
+
+    console.log('Sorted');
+    console.log(sorted.result);
+    console.log('Bogosort needed ', sorted.rounds, ' attempts');
+    console.log('--------\n\n');
+};
+
+var source;
+var size;
+var index;
+
+for( size = 1; size < 10; size++ ) {
+
+    source = new Array(size);
+    
+    for( index = 0; index < size; index++ )
+        source[index] = random(10);
+
+    sortArray(source);
+}
