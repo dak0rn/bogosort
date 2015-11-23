@@ -3,7 +3,7 @@
  *
  * Author:	Daniel Koch <daniel@suitsoft.eu>
  * Creation:	22 Nov 2015
- * Updated:	Time-stamp: <2015-11-22 15:39:18 dak0rn>
+ * Updated:	Time-stamp: <2015-11-23 06:29:48 dak0rn>
  * Version:	1.0 - Initial release
  *
  */
@@ -149,7 +149,7 @@ describe('Bogosort', function() {
                     
                     var s = arrayEquals(test.exp, e.result);
                     expect(s).to.be.true;
-                    expect(e.rounds).to.be.above(0);
+                    expect(e.rounds).to.be.above( (test.src.length > 1 ? 0 : -1)  );
                 });
                 
             });
