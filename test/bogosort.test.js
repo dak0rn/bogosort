@@ -3,13 +3,13 @@
  *
  * Author:	Daniel Koch <daniel@suitsoft.eu>
  * Creation:	22 Nov 2015
- * Updated:	Time-stamp: <2015-11-23 06:35:06 dak0rn>
+ * Updated:	Time-stamp: <2015-11-24 05:50:22 dak0rn>
  * Version:	1.0 - Initial release
  *
  */
 var expect = require('chai').expect;
 
-var bogosort = require('../index.js');
+var bogosort = require('../bogosort');
 
 /*
  * Utility functions

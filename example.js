@@ -3,11 +3,11 @@
  *
  * Author:	Daniel Koch <daniel@suitsoft.eu>
  * Creation:	23 Nov 2015
- * Updated:	Time-stamp: <2015-11-23 06:27:08 dak0rn>
+ * Updated:	Time-stamp: <2015-11-24 05:50:07 dak0rn>
  * Version:	1.0 - Initial release
  *
  */
-var bogosort = require("./index");
+var bogosort = require("./bogosort");
 
 //+ random :: Number -> Number
 var random = function(e) { return Math.floor( Math.random() * (e+1) ); };
