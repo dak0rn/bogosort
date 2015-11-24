@@ -1,50 +1,74 @@
 # Bogosort
 
-This (stupid) package for node.js implements the well known BogoSort algorithm.
+The well known Bogosort sorting algorithm for JavaScript
 
 ## The algorithm
 
-Bogosort (also known as *Monkeysort* or *Stupidsort*) is a quite simple but stupid
-sorting algorithm that is not used in production.
 
-It shuffles a list of values as long as they are not sorted:
+Bogosort, also known as *Monkeysort* or *Stupidsort* is a quite simple sorting
+algorithm rarely used in production.
 
-    // Input: Array
-    while( !sorted(Array) )
-        shuffle(Array)
+The idea is to shuffle a collection as long as it is not sorted.
 
-### Sorted
-
-The package comes with a method that checks if an array is sorted.
-An array is sorted if the number at `i` is lower than the number at `i+1`
-for all numbers in the array (okay, except for the last one).
-The implementation is quite easy:
-
-    // Input: Array of length n
-    for i from 0 to n - 2
-        if Array[i] > Array[i+1]
-            return false
-
+```javascript
+// Input: Array
+while( !sorted(Array) )
+    shuffle(Array)
+```
 
 ### Shuffle
 
-Shuffling is not as easy as many people think. I have chosen the Fisher-Yates-Algorithm
-to shuffle the array.
+Bogosort uses a modern variant of the [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle), also known as the *Durstenfeld shuffle algorithm*.
+It also relies on the [broken Math.random()](https://www.reddit.com/r/javascript/comments/3th8mr/mathrandom_is_broken_in_v8chromenode/).
 
-[http://en.wikipedia.org/wiki/Fisher–Yates_shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle)
+```javascript
+// Input: Array of length n
+for i from n − 1 to 1 do
+    j = random from 0 to i
+    exchange a[j] and a[i]
+```
 
-Pseudo code follows:
+## API
 
-    // Input: Array of length n
-    for i from n − 1 to 1 do
-           j = random from 0 to i
-           exchange a[j] and a[i]
+Bogosort is exposed via [Universal Module Definition (UMD)](https://github.com/umdjs/umd). Thus, you can use it
+in your browser, in a require.js environment as well as in node or any bundled project. At also comes
+with a minified version and a source map.
 
+Bogosort exposes a function `bogosort()` that takes an array of numbers and returns a sorted copy of it. The original array
+will not be mutated.
 
-## Usage example
+```javascript
+var bogosort = require('bogosort');
 
-    var bogo = require("bogosort")();
+var sorted = bogosort([6, 3, -1, 19, 33, 12]);
+```
 
-    var a = [1,2,3,4,5,6,7,8,9];
-    console.log(a.shuffle());
-    console.log("Rounds: ", a.bogosort());
+The `bogosort()` function also has a function property `bogosort.measure()` that returns an object containing
+the sorted collection as well as number of rounds it took to sort it.
+
+```javascript
+var bogosort = require('bogosort');
+
+var sorted = bogosort.measure([8, 3, 99, -12, -4, 8, 9, 11, 183, 12, 33]);
+
+console.log('Sorted collection: ', sorted.result);
+console.log('Rounds it took: ', sorted.rounds);
+```
+
+The [example.js](https://github.com/dak0rn/bogosort/blob/master/example.js) file contains an example of that.
+
+## Building it
+
+To build it yourself just checkout the repository and run `npm install`.
+All important commands are run using `npm`.
+
+```shell
+# Run tests
+npm test
+
+# Run the example
+npm start
+
+# Build the minified version
+npm build
+```
