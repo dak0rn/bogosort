@@ -1,6 +1,6 @@
 {
     "name": "bogosort",
-    "version": "0.0.2",
+    "version": "1.0.0",
     "author": "Daniel K. <daniel@suitsoft.eu>",
     "description": "The well known Bogosort sorting algorithm for JavaScript",
     "scripts": {
