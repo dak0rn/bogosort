@@ -70,5 +70,5 @@ npm test
 npm start
 
 # Build the minified version
-npm build
+npm run build
 ```

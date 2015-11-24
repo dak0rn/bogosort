@@ -1,12 +1,12 @@
 {
     "name": "bogosort",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Daniel K. <daniel@suitsoft.eu>",
     "description": "The well known Bogosort sorting algorithm for JavaScript",
     "scripts": {
         "start": "node ./example.js",
         "test": "mocha",
-        "build": "uglifyjs -c -w --source-map bogosort.js.map -o bogosort.min.js"
+        "build": "uglifyjs bogosort.js -c -w --source-map bogosort.js.map -o bogosort.min.js"
     },
     "main": "./bogosort.js",
     "repository": {
