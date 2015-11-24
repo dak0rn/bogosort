@@ -2,12 +2,13 @@
     "name": "bogosort",
     "version": "0.0.2",
     "author": "Daniel K. <daniel@suitsoft.eu>",
-    "description": "This (stupid) package for node.js implements the well known BogoSort algorithm.",
+    "description": "The well known Bogosort sorting algorithm for JavaScript",
     "scripts": {
         "start": "node ./example.js",
-        "test": "mocha --reporter=dot"
+        "test": "mocha",
+        "build": "uglifyjs -c -w --source-map bogosort.js.map -o bogosort.min.js"
     },
-    "main": "./index.js",
+    "main": "./bogosort.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/dak0rn/bogosort.git"
@@ -25,6 +26,7 @@
     },
     "devDependencies": {
         "chai": "^3.4.1",
-        "mocha": "^2.3.4"
+        "mocha": "^2.3.4",
+        "uglify-js": "^2.6.1"
     }
 }
