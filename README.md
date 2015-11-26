@@ -2,6 +2,8 @@
 
 The well known Bogosort sorting algorithm for JavaScript
 
+![Build status](https://travis-ci.org/dak0rn/bogosort.svg?branch=master)
+
 ## The algorithm
 
 
